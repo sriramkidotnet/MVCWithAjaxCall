@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+   
+</head>
+<body>
+    <div> 
+       <input type="text" id="txtname" />
+        <input type="button" id="btnGet" value="Get Current Time" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+           
+            $(function () {
+                $("#btnGet").click(function () {
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: "/Welcome/AjaxMethod",
+                        data: '{name:"' + $("#txtname").val() + '" }',
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (response) {
+                            alert('Name :' + response.Name);
+                        },
+                        error: function () { alert(response.responseText); }
+                      
+
+                    });
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
